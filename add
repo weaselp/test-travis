@@ -1,5 +1,13 @@
 #!/bin/sh
 
+query="0"
+while [ "$#" -gt 0 ]; do
+  query="$query + $1"
+  shift
+done
+psql -c "select $query" -t -U postgres
+
+exit
 s=0
 while [ "$#" -gt 0 ]; do
   s=$(( s + $1 ))
