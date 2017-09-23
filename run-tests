@@ -11,6 +11,7 @@ while read sum summands; do
     echo "OK: $sum == sum $summands"
   else
     echo "FAIL: $sum == sum $summands"
+    bash -x ./add $summands
     e=1
   fi
 done << "EOF"
