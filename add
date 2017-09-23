@@ -5,7 +5,8 @@ while [ "$#" -gt 0 ]; do
   query="$query + $1"
   shift
 done
-psql -c "select $query" -t -U postgres
+s=$(psql -c "select $query" -t -U postgres)
+echo $s
 
 exit
 s=0
