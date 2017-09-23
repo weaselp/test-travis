@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+e=0
+
+while read sum summands; do
+  [[ "$sum" =~ ^# ]] && continue
+  r=$(./add $summands)
+  if [ "$r" = "$sum" ]; then
+    echo "OK: $sum == sum $summands"
+  else
+    echo "FAIL: $sum == sum $summands"
+    e=1
+  fi
+done << "EOF"
+4 1 3
+4 1 1 1 1
+4 0 4
+4 4
+1 1 0
+1 1
+0 0
+EOF
+
+exit $e
